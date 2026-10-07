@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "r2ai-stage1-legal-retrieval"
+version = "1.0.0"
+description = "BM25 + dense retrieval + RRF + cross-encoder for Vietnamese legal retrieval"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24,<3",
+  "rank-bm25>=0.2.2,<1",
+  "sentence-transformers>=3,<6",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.16,<1"]
+
+[project.scripts]
+r2ai-retrieval = "baseline.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["baseline*"]
+
+[tool.ruff]
+target-version = "py310"

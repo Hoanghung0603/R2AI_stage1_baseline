@@ -1,0 +1,24 @@
+{
+  "article_max_chars": 4000,
+  "chunk_target_chars": 1800,
+  "structural_unit_max_chars": 3200,
+  "embedding_model": "AITeamVN/Vietnamese_Embedding",
+  "embedding_revision": "dea33aa1ab339f38d66ae0a40e6c40e0a9249568",
+  "embedding_max_tokens": 2048,
+  "embedding_dtype": "float16",
+  "reranker_model": "AITeamVN/Vietnamese_Reranker",
+  "reranker_revision": "f536976248403314225d7fdfdbc87f0e9516a54e",
+  "reranker_max_tokens": 512,
+  "bm25_k1": 1.5,
+  "bm25_b": 0.75,
+  "bm25_epsilon": 0.25,
+  "top_per_retriever": 100,
+  "rerank_candidates": 100,
+  "rrf_c": 60.0,
+  "bm25_weight": 1.0,
+  "dense_weight": 1.0,
+  "top_k": 3,
+  "batch_size": 8,
+  "device": "cuda"
+}
+
