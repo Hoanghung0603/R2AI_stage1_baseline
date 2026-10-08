@@ -1,6 +1,6 @@
 # R2AI Stage 1: truy hồi văn bản pháp luật tiếng Việt
 
-Mã nguồn này triển khai phương pháp cơ bản được mô tả trong tài liệu kỹ thuật: phân đoạn theo cấu trúc pháp luật, truy hồi bằng BM25 và dense embedding, hợp nhất bằng RRF, xếp hạng lại bằng cross-encoder, rồi dùng MaxP để giữ một đoạn đại diện cho mỗi điều. Kết quả cuối gồm tối đa ba điều cho mỗi câu hỏi.
+Mã nguồn này triển khai phương pháp cơ bản: phân đoạn theo cấu trúc pháp luật, truy hồi bằng BM25 và dense embedding, tổ hợp kết quả với RRF rồi rerank. 
 
 Hai mô hình được sử dụng là [AITeamVN/Vietnamese_Embedding](https://huggingface.co/AITeamVN/Vietnamese_Embedding) và [AITeamVN/Vietnamese_Reranker](https://huggingface.co/AITeamVN/Vietnamese_Reranker). Cấu hình mặc định cố định phiên bản mô hình theo commit để kết quả không thay đổi ngoài ý muốn.
 
@@ -31,6 +31,6 @@ python -m baseline.cli run \
 
 ## Dữ liệu tham khảo
 
-Nếu chưa có dữ liệu đầu vào, có thể tham khảo [gói dữ liệu đã xử lý](https://drive.google.com/drive/folders/1NvkAEpOjOqHNqF9kC-FvrOs5fjIiscTj) do **Hung&Fong**, đội đạt giải Nhì R2AI Stage 1, chia sẻ. Kết quả cuộc thi được công bố trong [repository R2AI Stage 1](https://github.com/aigurutinix/r2ai-stage-1/blob/main/README.en.md); quy trình xử lý của đội được trình bày trong [thư mục Hung&Fong](https://github.com/aigurutinix/r2ai-stage-1/tree/main/hung%26phong). Đây là một lựa chọn đầu vào bổ sung, tách biệt với phần mô tả thiết lập thực nghiệm.
+Nếu bạn chưa có tập dữ liệu pháp luật, có thể tham khảo [gói dữ liệu đã xử lý](https://drive.google.com/drive/folders/1NvkAEpOjOqHNqF9kC-FvrOs5fjIiscTj) do **Hung&Fong**, đội đạt giải Nhì R2AI Stage 1, chia sẻ. Kết quả cuộc thi được công bố trong [repository R2AI Stage 1](https://github.com/aigurutinix/r2ai-stage-1/blob/main/README.en.md). Quy trình xử lý của đội được trình bày trong [thư mục Hung&Fong](https://github.com/aigurutinix/r2ai-stage-1/tree/main/hung%26phong). Đây là tập dữ liệu pháp luật đã xử lý khá tốt và có thể dùng để tái lập kết quả thực nghiệm trong tài liệu baseline.
 
 Gói dữ liệu sử dụng định dạng riêng. Trước khi chạy lệnh `build`, chuyển các điều luật cần dùng về schema JSONL gồm `article_id`, `doc_id`, `article_number`, `article_reference` và `text` như mô tả ở trên. Mã nguồn không phụ thuộc vào cấu trúc tệp hay chỉ mục có sẵn trong gói dữ liệu này.
